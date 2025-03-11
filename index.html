@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken zZz | Dark Web</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
+
+        /* إعدادات الخلفية */
+        body {
+            background: url('https://i.imgur.com/oVDxk0D.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'VT323', monospace;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            backdrop-filter: blur(6px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* الأفاتار */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px #fff, 0 0 40px #aaa;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+            animation: glitch 2s infinite alternate;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* تأثير glitch */
+        @keyframes glitch {
+            0% { transform: translate(0px, 0px); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0px, 0px); }
+        }
+
+        /* العنوان الرئيسي */
+        .hacker-text {
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 5px #ccc, 0 0 10px #999, 0 0 20px #666;
+            animation: glitch 1.5s infinite alternate;
+        }
+
+        /* نص متحرك بأسلوب المصفوفة */
+        .matrix {
+            font-size: 18px;
+            opacity: 0.8;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            display: inline-block;
+            animation: typing 3s steps(40, end) infinite, blinkCursor 0.6s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkCursor {
+            50% { border-color: transparent; }
+        }
+
+        /* نافذة الأوامر */
+        .console {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            border: 2px solid #fff;
+            display: inline-block;
+            margin-top: 20px;
+            font-family: monospace;
+            color: #fff;
+            width: 60%;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        .console::before {
+            content: "root@kenzZz:~$ ";
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* تأثير الوميض */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        /* كود الجافاسكريبت لإنشاء تأثير المصفوفة المتحركة */
+        .matrix-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- تأثير المصفوفة -->
+    <div class="matrix-animation">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
+
+    <!-- الأفاتار -->
+    <img class="avatar" src="https://i.imgur.com/B0HNz9m.jpeg" alt="Avatar">
+    
+    <!-- الاسم -->
+    <h1 class="hacker-text">Ken zZz</h1>
+
+    <!-- النص المتحرك -->
+    <p class="matrix">"I am the ghost in the machine..."</p>
+
+    <!-- نافذة الأوامر -->
+    <div class="console">
+        <code>sudo access granted</code>
+    </div>
+
+    <!-- كود الجافاسكريبت لإنشاء تأثير المصفوفة المتحركة -->
+    <script>
+        const canvas = document.getElementById("matrixCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01XZ#@$%&*+~".split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#fff"; // تغيير اللون إلى الأبيض
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+    </script>
+</body>
+</html>
