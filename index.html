@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ken zZz </title>
+    <title>Ken zZz</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
 
-        
         body {
             background: url('https://i.imgur.com/oVDxk0D.jpeg') no-repeat center center fixed;
             background-size: cover;
@@ -25,7 +24,6 @@
             overflow: hidden;
         }
 
-        
         .avatar {
             width: 120px;
             height: 120px;
@@ -41,7 +39,6 @@
             transform: scale(1.1);
         }
 
-        
         @keyframes glitch {
             0% { transform: translate(0px, 0px); }
             20% { transform: translate(-2px, 2px); }
@@ -51,7 +48,6 @@
             100% { transform: translate(0px, 0px); }
         }
 
-        
         .hacker-text {
             font-size: 50px;
             font-weight: bold;
@@ -60,7 +56,6 @@
             animation: glitch 1.5s infinite alternate;
         }
 
-        
         .matrix {
             font-size: 18px;
             opacity: 0.8;
@@ -80,7 +75,6 @@
             50% { border-color: transparent; }
         }
 
-        
         .console {
             background: rgba(0, 0, 0, 0.8);
             padding: 15px;
@@ -103,14 +97,12 @@
             font-weight: bold;
         }
 
-        
         @keyframes flicker {
             0% { opacity: 1; }
             50% { opacity: 0.8; }
             100% { opacity: 1; }
         }
 
-        
         .matrix-animation {
             position: absolute;
             top: 0;
@@ -122,29 +114,44 @@
             opacity: 0.1;
         }
 
+        /* Media Query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .hacker-text {
+                font-size: 36px;
+            }
+
+            .matrix {
+                font-size: 14px;
+            }
+
+            .console {
+                width: 80%;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
-    
+
     <div class="matrix-animation">
         <canvas id="matrixCanvas"></canvas>
     </div>
 
-    
     <img class="avatar" src="https://i.imgur.com/B0HNz9m.jpeg" alt="Avatar">
-    
-    
+
     <h1 class="hacker-text">Ken zZz</h1>
 
-    
     <p class="matrix">"I am the ghost in the machine..."</p>
 
-    
     <div class="console">
         <code>sudo access granted</code>
     </div>
 
-    
     <script>
         const canvas = document.getElementById("matrixCanvas");
         const ctx = canvas.getContext("2d");
