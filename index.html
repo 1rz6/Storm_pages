@@ -1,233 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storm pages</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: black;
-            color: white;
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            flex-direction: column;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .overlay span {
-            font-size: 20px;
-            letter-spacing: 3px;
-            position: relative;
-            animation: glitch 1.5s infinite alternate;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
-            color: white;
-        }
-        .content {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            flex-direction: column;
-        }
-        .message {
-            font-size: 24px;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.6);
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid white;
-            width: fit-content;
-            text-align: center;
-            transition: text-shadow 0.5s ease-in-out;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
-        }
-        .message:hover {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7);
-        }
-        .username {
-            font-size: 18px;
-            color: dimgray;
-            margin-top: 10px;
-            text-shadow: 0 0 3px gray;
-            animation: flicker 3s infinite alternate;
-            transition: color 0.3s ease-in-out;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-        }
-        .username:hover {
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.7);
-        }
-        .japanese-message {
-            font-size: 18px;
-            color: gray;
-            margin-top: 20px;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-shadow: 0 0 3px gray;
-            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-            animation: glowEffect 1.5s infinite alternate;
-            opacity: 0;
-        }
-        .japanese-message.show {
-            opacity: 1;
-        }
-        .info-box {
-            margin-top: 40px;
-            font-size: 18px;
-            color: #ccc;
-            max-width: 600px;
-            text-align: center;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            animation: fadeIn 3s ease-in-out;
-            opacity: 0;
-        }
-        .info-box.show {
-            opacity: 1;
-        }
-        .image-container {
-            margin-top: 20px;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 4s ease-in-out forwards;
-        }
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes glitch {
-            0% { transform: translate(0); opacity: 1; }
-            20% { transform: translate(-2px, 2px); opacity: 0.8; }
-            40% { transform: translate(2px, -2px); opacity: 1; }
-            60% { transform: translate(-2px, 2px); opacity: 0.9; }
-            80% { transform: translate(2px, -2px); opacity: 1; }
-            100% { transform: translate(0); opacity: 0.9; }
-        }
-        @keyframes flicker {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        @keyframes glowEffect {
-            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7); }
-            100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>storm@onion</title>
+  <style>
+    body {
+      background-color: #000; /* خلفية سوداء */
+      color: #fff; /* نصوص بيضاء */
+      font-family: monospace;
+      padding: 40px;
+      text-align: center;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); /* خلفية خفيفة بنمط تدريجي */
+      background-size: 20px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff;
+      }
+    }
+
+    .divider {
+      margin: 20px auto;
+      width: 60%;
+      height: 1px;
+      background: #fff; /* تغيير اللون إلى الأبيض */
+      opacity: 0.2;
+    }
+
+    .image-box {
+      margin: 30px auto;
+      width: 250px;  /* صغرنا الحجم */
+      height: 250px; /* صغرنا الحجم */
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(10%) brightness(90%);
+      transition: 0.3s ease-in-out;
+    }
+
+    .image-box img:hover {
+      filter: none;
+      transform: scale(1.05);
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .glitch {
+      color: #fff; /* تغيير النصوص إلى الأبيض */
+      text-shadow: 0 0 3px #fff, 0 0 7px #fff;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 0 0 3px #fff; }
+      50% { text-shadow: 1px 1px 5px #f00, -1px -1px 5px #0ff; }
+      100% { text-shadow: 0 0 3px #fff; }
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #fff; /* تغيير اللون إلى الأبيض */
+    }
+
+    a {
+      color: #fff; /* تغيير الروابط إلى الأبيض */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      color: #fff; /* تغيير الكود إلى الأبيض */
+      background-color: #000;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-    <div class="overlay" onclick="enterSite()">
-        <span>Click To Enter</span>
-    </div>
-    <div class="content">
-        <div class="message" id="typewriter"></div>
-        <div class="message" id="typewriter2"></div>
-        <div class="username">Storm</div>
-        <div class="japanese-message" id="japaneseMessage">私はハッカーではない</div>
+  <h1 class="glitch">storm@onion</h1>
+  <div class="divider"></div>
 
-        <!-- Add Information Box -->
-        
-        <div class="info-box" id="cyberInfo">
-          <h2>Loneliness:</h2>
-          <p>Loneliness is a feeling of emptiness and silence, even when surrounded by people. It makes you feel distant from everyone, with solitude weighing heavily on you. In this silence, one searches for meaning and ends up finding oneself. Loneliness reveals who we truly are.</p>
-      </div>
-            
+  <div class="image-box">
+    <img src="https://i.postimg.cc/BnN8DkYH/Capture.png" alt="dark avatar">
+  </div>
 
-        <!-- Add Image Container -->
-        <div class="image-container" id="imageContainer">
-            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsoOKObHTRddt4IGJsXY2cgQUAppTx-fy-3PYrFa1RDBoFMB2N" alt="The Void">
-        </div>
-    </div>
+  <p>In the stillness, I find clarity.</p>
+  <p>Alone, yet not empty. A world of noise fades away.</p>
+  <p>Here, in solitude, the mind thrives, untethered.</p>
+  <p>This is not an escape, it's a space to breathe, to exist.</p>
 
-    <script>
-        const messages = ["The Grid is Watching", "Something is Coming...", "Prepare for the Next Level"];
-        let index = 0;
+  <div class="divider"></div>
 
-        function enterSite() {
-            document.querySelector('.overlay').style.display = 'none';
-            document.querySelector('.content').style.display = 'flex';  // Show the content directly
-            startTypewriterEffect();
-            setTimeout(showJapaneseMessage, 1000); // Delay for Japanese message
-            setTimeout(showCyberInfo, 2000); // Delay for cyber info
-            setTimeout(showImage, 2500); // Delay for image
-        }
+  <p>📡 Jabber/XMPP: <code>storm@deepnet.onion</code></p>
+  <p>🌐 Status: <span class="glitch">ACTIVE</span></p>
 
-        function startTypewriterEffect() {
-            let messageContainer = document.getElementById('typewriter2');
-            let text = messages[index];
-            let i = 0;
-            messageContainer.textContent = '';
-
-            function typeWriter() {
-                if (i < text.length) {
-                    messageContainer.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                } else {
-                    setTimeout(eraseText, 1500);
-                }
-            }
-
-            function eraseText() {
-                if (messageContainer.textContent.length > 0) {
-                    messageContainer.textContent = messageContainer.textContent.slice(0, -1);
-                    setTimeout(eraseText, 50);
-                } else {
-                    index = (index + 1) % messages.length;
-                    setTimeout(startTypewriterEffect, 500);
-                }
-            }
-            typeWriter();
-        }
-
-        function showJapaneseMessage() {
-            document.getElementById('japaneseMessage').classList.add('show'); // Add class to show with delay
-        }
-
-        function showCyberInfo() {
-            document.getElementById('cyberInfo').classList.add('show'); // Add class to show with delay
-        }
-
-        function showImage() {
-            document.getElementById('imageContainer').classList.add('show'); // Add class to show with delay
-        }
-    </script>
+  <div class="footer">
+    <p>// Storm was here //</p>
+  </div>
 </body>
 </html>
